@@ -332,9 +332,9 @@ when "openvswitch"
       :local_ip => local_ip
     )
     notifies :restart, "service[quantum-server]", :delayed
-    if node.run_list.expand(node.chef_environment).recipes.include?("openstack-network::openvswitch")
+#    if node.run_list.expand(node.chef_environment).recipes.include?("openstack-network::openvswitch")
       notifies :restart, "service[quantum-plugin-openvswitch-agent]", :delayed
-    end
+#    end
   end
 
 
@@ -379,7 +379,7 @@ template "/etc/default/quantum-server" do
       :plugin_config => template_file
     )
   only_if {
-      node.run_list.expand(node.chef_environment).recipes.include?("openstack-network::server")
+#      node.run_list.expand(node.chef_environment).recipes.include?("openstack-network::server")
       platform?(%w{ubuntu debian})
   }
 end
