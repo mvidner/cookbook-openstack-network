@@ -63,7 +63,7 @@ end
 service "quantum-openvswitch-switch" do
   service_name platform_options["quantum_openvswitch_service"]
   supports :status => true, :restart => true
-  action :enable
+  action [:enable, :start]
 end
 
 service "quantum-server" do
